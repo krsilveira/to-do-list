@@ -18,3 +18,7 @@ This project is a simple to-do list application created using HTML, CSS, and Jav
 1. Clone the repository to your local machine.
    ```bash
    git clone https://github.com/krsilveira/to-do-list.git
+
+
+## DEPLOYED LINK 
+ https://krsilveira.github.io/to-do-list/
