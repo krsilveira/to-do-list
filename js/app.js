@@ -47,9 +47,15 @@
     var li = $.parent(event.target, 'li');
     var element = $('.edit', li);
     this.currentId = parseInt(li.dataset.id, 10);
-    li.className += ' editing';
-    element.value = event.target.innerHTML;
-    element.focus();
+    var newText = prompt('Edit your to-do item:', event.target.innerHTML);
+    if (newText !== null) {
+      newText = newText.trim();
+      if (newText !== '') {
+        li.className += ' editing';
+        element.value = newText;
+        element.focus();
+      }
+    }
   };
 
   App.fn.onEditingCancel = function(event) {
@@ -104,14 +110,12 @@
     return $('[data-id="' + id + '"]');
   };
 
-  App.fn.onInsert = function( event ) {
-    var element = event.target;
-    var text = element.value.trim();
-    if( text && event.keyCode === ENTER_KEY ) {
-      this.insert(text);
-      element.value = '';
+  App.fn.onInsert = function() {
+    var text = prompt('Enter a new to-do item:');
+    if (text !== null && text.trim() !== '') {
+      this.insert(text.trim());
     }
-  };
+  };  
 
   App.fn.onToggleAll = function(event) {
     var checked = event.target.checked;
